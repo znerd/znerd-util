@@ -1,4 +1,10 @@
+--- CHANGES INTRODUCED IN ZNERD-UTIL 0.3 -------------------------------------
+
+* Fixed recursion error in TextUtils.quote(Object).
+
+
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.2 -------------------------------------
 
 * Added TextUtils.isEmpty(String).
+* Removed TextUtils.quote(String), keeping TextUtils.quote(Object).
 * Switched to 2-clause BSD license.
