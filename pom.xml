@@ -10,6 +10,8 @@
     <ant.version>1.8.2</ant.version>
     <maven.version>3.0.3</maven.version>
     <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.5</maven-surefire-plugin.version>
+    <junit.version>4.8.2</junit.version>
   </properties>
 
   <dependencies>
@@ -23,7 +25,14 @@
       <artifactId>maven-plugin-api</artifactId>
       <version>${maven.version}</version>
     </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -35,6 +44,11 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+			</plugin>
     </plugins>
   </build>
 </project>
