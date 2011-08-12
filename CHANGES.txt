@@ -1,0 +1,3 @@
+--- CHANGES INTRODUCED IN ZNERD-UTIL 0.2 -------------------------------------
+
+* Added TextUtils.isEmpty(String).
