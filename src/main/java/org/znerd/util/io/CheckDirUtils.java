@@ -11,8 +11,6 @@ import org.znerd.util.log.LogLevel;
 
 public class CheckDirUtils {
     
-    // TODO: Move to more generic package, e.g. org.znerd.util.io
-
     /**
      * Checks if the specified abstract path name refers to an existing directory and creates the directory if appropriate.
      * 
