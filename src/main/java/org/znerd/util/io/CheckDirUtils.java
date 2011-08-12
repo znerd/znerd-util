@@ -10,7 +10,7 @@ import org.znerd.util.log.Limb;
 import org.znerd.util.log.LogLevel;
 
 public class CheckDirUtils {
-    
+
     /**
      * Checks if the specified abstract path name refers to an existing directory and creates the directory if appropriate.
      * 
