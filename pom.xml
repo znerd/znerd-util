@@ -4,7 +4,7 @@
   <artifactId>znerd-util</artifactId>
   <packaging>jar</packaging>
   <name>Znerd.org Utility Library</name>
-  <version>0.3-SNAPSHOT</version>
+  <version>0.3</version>
 
   <properties>
     <ant.version>1.8.2</ant.version>
