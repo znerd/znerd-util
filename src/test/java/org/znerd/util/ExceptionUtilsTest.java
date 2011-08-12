@@ -27,12 +27,14 @@ public final class ExceptionUtilsTest {
 
     @Test
     public void testGetRootCauseOfExceptionWithCauses() {
-        Exception root = new Exception();
-        Exception e2 = new Exception(root);
-        Exception e3 = new Exception(e2);
-        Exception e4 = new Exception(e3);
-        Exception e5 = new Exception(e4);
+        Throwable root = new Exception();
+        Throwable e2 = new Exception(root);
+        Throwable e3 = new Error(e2);
+        Throwable e4 = new RuntimeException(e3);
+        Throwable e5 = new AssertionError();
+        e5.initCause(e4);
+        Throwable e6 = new Throwable(e5);
 
-        assertEquals(root, ExceptionUtils.getRootCause(e5));
+        assertEquals(root, ExceptionUtils.getRootCause(e6));
     }
 }
