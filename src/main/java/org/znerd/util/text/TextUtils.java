@@ -6,6 +6,10 @@ public class TextUtils {
     public static final String quote(Object o) {
         return o == null ? "(null)" : quote(o.toString());
     }
+    
+    public static final boolean isEmpty(String s) {
+        return s == null || "".trim().equals(s);
+    }
 
     private TextUtils() {
     }
