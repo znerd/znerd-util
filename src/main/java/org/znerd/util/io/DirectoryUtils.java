@@ -68,37 +68,6 @@ public class DirectoryUtils {
         }
     }
 
-    public static final File createTempDir() throws IOException {
-        return createTempDir(true);
-    }
-
-    public static final File createTempDir(boolean deleteOnExit) throws IOException {
-        final File path = createTempFile();
-        deleteTempFile(path);
-        createTempDir(path, deleteOnExit);
-        return path;
-    }
-
-    private static File createTempFile() throws IOException {
-        final File path = File.createTempFile("temp", Long.toString(System.nanoTime()));
-        return path;
-    }
-
-    private static void deleteTempFile(File path) throws IOException {
-        if (!path.delete()) {
-            throw new IOException("Failed to delete temporary file " + quote(path.getAbsolutePath()) + '.');
-        }
-    }
-
-    private static void createTempDir(File path, boolean deleteOnExit) throws IOException {
-        if (!path.mkdir()) {
-            throw new IOException("Failed to create temporary directory: " + quote(path.getAbsolutePath()) + '.');
-        }
-        if (deleteOnExit) {
-            path.deleteOnExit();
-        }
-    }
-
     private DirectoryUtils() {
     }
 }
