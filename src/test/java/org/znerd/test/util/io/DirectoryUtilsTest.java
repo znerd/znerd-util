@@ -34,8 +34,69 @@ public class DirectoryUtilsTest {
         }
         assertTrue("Expected IllegalArgumentException.", ok);
     }
+
+    @Test
+    public void testCheckDirCreateDirectory() throws IOException {
+        testCheckDirCreateDirectory(false, false);
+        testCheckDirCreateDirectory(true, false);
+        testCheckDirCreateDirectory(false, true);
+        testCheckDirCreateDirectory(true, true);
+    }
+
+    private void testCheckDirCreateDirectory(boolean mustBeReadable, boolean mustBeWritable) throws IOException {
+        File path = createTempFileObject();
+        assertFalse(path.exists());
+        DirectoryUtils.checkDir("Temporary dir for unit test.", path, mustBeReadable, mustBeWritable, true);
+        assertTrue(path.exists());
+    }
+
+    private File createTempFileObject() {
+        File path = new File(TEMPDIR_PATH, "" + System.nanoTime() + "-" + Math.random());
+        path.deleteOnExit();
+        return path;
+    }
     
-    private void testCheckDirCreateDirectory() throws IOException {
+    private static final String TEMPDIR = System.getProperty("java.io.tmpdir");
+    private static final File TEMPDIR_PATH = new File(TEMPDIR);
+
+    @Test
+    public void testCheckDirFailCreateDirectory() throws IOException {
+        testCheckDirFailCreateDirectory(false, false);
+        testCheckDirFailCreateDirectory(true, false);
+        testCheckDirFailCreateDirectory(false, true);
+        testCheckDirFailCreateDirectory(true, true);
+    }
+
+    private void testCheckDirFailCreateDirectory(boolean mustBeReadable, boolean mustBeWritable) throws IOException {
+        File path = createTempFileObject();
+        path.createNewFile();
+        File subpath = new File(path, "sub");
+        boolean ok = false;
+        try {
+            DirectoryUtils.checkDir("Temporary dir for unit test.", subpath, mustBeReadable, mustBeWritable, true);
+        } catch (IOException e) {
+            ok = true;
+        }
+        assertTrue("Expected IOException.", ok);
+    }
+    
+    @Test
+    public void testCheckDirDontCreateDirectory() throws IOException {
+        File path = createTempFileObject();
+        testCheckDirDontCreateDirectory(path, false, false);
+        testCheckDirDontCreateDirectory(path, true, false);
+        testCheckDirDontCreateDirectory(path, false, true);
+        testCheckDirDontCreateDirectory(path, true, true);
+    }
+
+    private void testCheckDirDontCreateDirectory(File path, boolean mustBeReadable, boolean mustBeWritable) throws IOException {
+        boolean ok = false;
+        try {
+            DirectoryUtils.checkDir("Temporary dir for unit test.", path, mustBeReadable, mustBeWritable, false);
+        } catch (IOException e) {
+            ok = true;
+        }
         
+        assertTrue("Expected IOException.", ok);
     }
 }
