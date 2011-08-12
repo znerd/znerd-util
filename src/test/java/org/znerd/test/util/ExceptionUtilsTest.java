@@ -1,9 +1,10 @@
 // See the COPYRIGHT file for copyright and license information
-package org.znerd.util;
+package org.znerd.test.util;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.znerd.util.ExceptionUtils;
 import org.znerd.util.test.TestFailedException;
 import org.znerd.util.test.TestUtils;
 

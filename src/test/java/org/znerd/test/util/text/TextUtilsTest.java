@@ -1,10 +1,11 @@
 // See the COPYRIGHT file for copyright and license information
-package org.znerd.util.text;
+package org.znerd.test.util.text;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.znerd.util.test.TestFailedException;
 import org.znerd.util.test.TestUtils;
+import org.znerd.util.text.TextUtils;
 
 public class TextUtilsTest {
     @Test
