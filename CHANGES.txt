@@ -1,6 +1,7 @@
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.3 -------------------------------------
 
 * Fixed recursion error in TextUtils.quote(Object).
+* Added TODO.txt file.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.2 -------------------------------------
