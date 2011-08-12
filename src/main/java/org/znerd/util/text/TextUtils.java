@@ -8,7 +8,7 @@ public class TextUtils {
     }
     
     public static final boolean isEmpty(String s) {
-        return s == null || "".trim().equals(s);
+        return s == null || "".equals(s.trim());
     }
 
     private TextUtils() {
