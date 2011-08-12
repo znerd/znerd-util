@@ -152,4 +152,34 @@ public class DirectoryUtilsTest {
         }
         assertTrue("Expected IOException.", ok);
     }
+    
+    @Test
+    public void testCheckDirUnwritableDirectoryOK() throws IOException {
+        File path = Files.createTempDir();
+        path.setWritable(false);
+        DirectoryUtils.checkDir("Temporary dir for unit test.", path, false, false, false);
+        DirectoryUtils.checkDir("Temporary dir for unit test.", path, false, false, true);
+        DirectoryUtils.checkDir("Temporary dir for unit test.", path, true, false, false);
+        DirectoryUtils.checkDir("Temporary dir for unit test.", path, true, false, true);
+    }
+
+    @Test
+    public void testCheckDirUnwritableDirectoryNOK() throws IOException {
+        File path = Files.createTempDir();
+        path.setWritable(false);
+        testCheckDirUnwritableDirectoryNOK(path, false, false);
+        testCheckDirUnwritableDirectoryNOK(path, false, true);
+        testCheckDirUnwritableDirectoryNOK(path, true, false);
+        testCheckDirUnwritableDirectoryNOK(path, true, true);
+    }
+    
+    private void testCheckDirUnwritableDirectoryNOK(File path, boolean mustBeReadable, boolean createIfNonexistent) throws IOException {
+        boolean ok = false;
+        try {
+            DirectoryUtils.checkDir("Temporary dir for unit test.", path, mustBeReadable, true, createIfNonexistent);
+        } catch (IOException e) {
+            ok = true;
+        }
+        assertTrue("Expected IOException.", ok);
+    }
 }
