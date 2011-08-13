@@ -17,9 +17,13 @@ public class TestUtils {
      * </ul>
      * 
      * @param clazz The class to check, should not be <code>null</code>.
+     * @throws IllegalArgumentException if <code>clazz == null</code>.
      * @throws TestFailedException In case an issue is found.
      */
-    public static final void testUtilityClassConstructor(Class<?> clazz) throws TestFailedException {
+    public static final void testUtilityClassConstructor(Class<?> clazz) throws IllegalArgumentException, TestFailedException {
+        if (clazz == null) {
+            throw new IllegalArgumentException("clazz == null");
+        }
         Constructor<?> con = assertOneConstructor(clazz);
         assertPrivateConstructor(con);
         assertNoExceptionFromConstructor(con);
