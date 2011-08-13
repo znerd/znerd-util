@@ -3,6 +3,7 @@
 * Implemented several unit tests.
 * Renamed CheckDirUtils to DirectoryUtils.
 * Introduced InMemoryLimb, AntLimb, MavenLimb.
+* Added ArrayUtils.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.3 -------------------------------------

@@ -4,6 +4,7 @@ package org.znerd.util.test;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
+import org.znerd.util.ArrayUtils;
 import org.znerd.util.text.TextUtils;
 
 public class TestUtils {
@@ -31,11 +32,7 @@ public class TestUtils {
 
     private static Constructor<?> assertOneConstructor(Class<?> clazz) throws TestFailedException {
         Constructor<?>[] cons = clazz.getDeclaredConstructors();
-        if (cons == null) {
-            throw new TestFailedException("Expected exactly 1 constructor in class " + clazz.getName() + ". However, getDeclaredConstructors() returned (null).");
-        }
-
-        int constructorCount = cons.length;
+        int constructorCount = ArrayUtils.countElements(cons);
         if (constructorCount != 1) {
             throw new TestFailedException("Expected exactly 1 constructor in class " + clazz.getName() + ". However, " + constructorCount + " were found.");
         }

@@ -8,6 +8,12 @@ import org.znerd.util.test.TestFailedException;
 import org.znerd.util.test.TestUtils;
 
 public class TestUtilsTest {
+
+    @Test
+    public void testUtilityClassConstructor() throws Exception {
+        TestUtils.testUtilityClassConstructor(TestUtils.class);
+    }
+
     @Test
     public void testNullArg() throws Exception {
         boolean ok = false;
@@ -72,4 +78,13 @@ public class TestUtilsTest {
         }
     }
 
+    @Test
+    public void testProperUtilityClassConstructor() throws Exception {
+        TestUtils.testUtilityClassConstructor(ProperUtilityClass.class);
+    }
+
+    private static class ProperUtilityClass {
+        private ProperUtilityClass() {
+        }
+    }
 }
