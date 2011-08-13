@@ -2,6 +2,7 @@ package org.znerd.test.util.log;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
@@ -33,13 +34,9 @@ public class InMemoryLimbTest {
         String message = "Log message for testing purpose.";
         Throwable exception = new Error();
 
-        long before = System.currentTimeMillis();
         Limb.log(level, message, exception);
-        long after = System.currentTimeMillis();
 
         InMemoryLimb.Entry entry = getSingleEntry();
-        assertTrue(entry.getTimestamp() >= before);
-        assertTrue(entry.getTimestamp() <= after);
         assertEquals(level, entry.getLevel());
         assertEquals(message, entry.getMessage());
         assertEquals(exception, entry.getException());
@@ -56,10 +53,51 @@ public class InMemoryLimbTest {
     }
 
     @Test
+    public void testAllLogLevels() {
+        Limb.log(LogLevel.DEBUG, "Message 1");
+        Limb.log(LogLevel.INFO, "Message 2", new RuntimeException());
+        Limb.log(LogLevel.NOTICE, "Message 3");
+        Limb.log(LogLevel.ERROR, "Message 4");
+        Limb.log(LogLevel.FATAL, "Message 5");
+
+        Iterator<InMemoryLimb.Entry> entries = _limb.getEntries().iterator();
+        assertEquals(LogLevel.DEBUG, entries.next().getLevel());
+        assertEquals(LogLevel.INFO, entries.next().getLevel());
+        assertEquals(LogLevel.NOTICE, entries.next().getLevel());
+        assertEquals(LogLevel.ERROR, entries.next().getLevel());
+        assertEquals(LogLevel.FATAL, entries.next().getLevel());
+    }
+
+    @Test
+    public void testTimestamp() {
+        long before1 = System.currentTimeMillis();
+        Limb.log(LogLevel.DEBUG, "Message 1");
+        long before2 = System.currentTimeMillis();
+        Limb.log(LogLevel.INFO, "Message 2", new RuntimeException());
+        long after = System.currentTimeMillis();
+
+        List<InMemoryLimb.Entry> entries = _limb.getEntries();
+        long timestamp1 = entries.get(0).getTimestamp();
+        assertTrue(timestamp1 >= before1);
+        assertTrue(timestamp1 <= before2);
+
+        long timestamp2 = entries.get(1).getTimestamp();
+        assertTrue(timestamp2 >= before2);
+        assertTrue(timestamp2 <= after);
+    }
+
+    @Test
     public void testNullLevelIsDebugLevel() {
         Limb.log(null, "test");
         InMemoryLimb.Entry entry = getSingleEntry();
         assertEquals(LogLevel.DEBUG, entry.getLevel());
+    }
+
+    @Test
+    public void testNullMessageIsEmptyMessage() {
+        Limb.log(LogLevel.INFO, null, new Error());
+        InMemoryLimb.Entry entry = getSingleEntry();
+        assertEquals("", entry.getMessage());
     }
 
     @Test
@@ -73,7 +111,7 @@ public class InMemoryLimbTest {
         } catch (UnsupportedOperationException cause) {
             ok = true;
         }
-        
+
         assertTrue("Expected UnsupportedOperationException, since list of entries should be unmodifiable.", ok);
     }
 }
