@@ -19,23 +19,25 @@
       <groupId>org.apache.ant</groupId>
       <artifactId>ant</artifactId>
       <version>${ant.version}</version>
+	  <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
       <version>${maven.version}</version>
+	  <scope>provided</scope>
     </dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>r09</version>
-			<scope>test</scope>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
