@@ -9,7 +9,7 @@ public class ArrayUtils {
             return array.length;
         }
     }
-    
+
     private ArrayUtils() {
     }
 }

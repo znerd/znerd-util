@@ -33,6 +33,10 @@ public class Limb {
         }
         INSTANCE = logger;
     }
+    
+    public static synchronized void resetLogger() {
+        INSTANCE = new Limb();
+    }
 
     protected void logImpl(LogLevel level, String message, Throwable exception) {
         fallbackLogImpl(level, message, exception);
