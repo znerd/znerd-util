@@ -5,6 +5,8 @@ import org.apache.maven.plugin.logging.Log;
 
 /**
  * Limb implementation that sends output via the Maven logging mechanism.
+ * <p>
+ * Levels are mapped as follows: TODO
  */
 public class MavenLimb extends Limb {
     public MavenLimb(Log log) throws IllegalArgumentException {

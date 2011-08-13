@@ -6,6 +6,8 @@ import org.apache.tools.ant.Task;
 
 /**
  * Limb implementation that sends output via the Ant logging mechanism.
+ * <p>
+ * Levels are mapped as follows: TODO
  */
 public class AntLimb extends Limb {
 
