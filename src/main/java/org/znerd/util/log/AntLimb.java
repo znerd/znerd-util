@@ -9,7 +9,7 @@ import org.apache.tools.ant.Task;
  */
 public class AntLimb extends Limb {
 
-    public AntLimb(Task task) {
+    public AntLimb(Task task) throws IllegalArgumentException {
         if (task == null) {
             throw new IllegalArgumentException("task == null");
         }

@@ -7,7 +7,10 @@ import org.apache.maven.plugin.logging.Log;
  * Limb implementation that sends output via the Maven logging mechanism.
  */
 public class MavenLimb extends Limb {
-    public MavenLimb(Log log) {
+    public MavenLimb(Log log) throws IllegalArgumentException {
+        if (log == null) {
+            throw new IllegalArgumentException("log == null");
+        }
         _log = log;
     }
 
