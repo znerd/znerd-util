@@ -1,3 +1,4 @@
+// See the COPYRIGHT file for copyright and license information
 package org.znerd.test.util.log;
 
 import static org.junit.Assert.*;
@@ -29,7 +30,20 @@ public class InMemoryLimbTest {
     }
 
     @Test
-    public void testSingleEntry() {
+    public void testTwoArgLog() {
+        LogLevel level = LogLevel.INFO;
+        String message = "Log message for testing purpose.";
+
+        Limb.log(level, message);
+
+        InMemoryLimb.Entry entry = getSingleEntry();
+        assertEquals(level, entry.getLevel());
+        assertEquals(message, entry.getMessage());
+        assertEquals(null, entry.getException());
+    }
+
+    @Test
+    public void testThreeArgLog() {
         LogLevel level = LogLevel.FATAL;
         String message = "Log message for testing purpose.";
         Throwable exception = new Error();
