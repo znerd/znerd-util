@@ -5,15 +5,32 @@ import java.io.File;
 
 import java.io.IOException;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.znerd.util.io.DirectoryUtils;
+import org.znerd.util.log.Limb;
+import org.znerd.util.log.NullLimb;
 import org.znerd.util.test.TestUtils;
 
 import static org.junit.Assert.*;
 
 import com.google.common.io.Files;
 
+/**
+ * Unit tests for the <code>DirectoryUtils</code> class. It uses a {@link NullLimb}, to avoid superfluous log messages during the testing. 
+ */
 public class DirectoryUtilsTest {
+    
+    @Before
+    public void setUp() {
+        Limb.setLogger(new NullLimb());
+    }
+    
+    @After
+    public void tearDown() {
+        Limb.resetLogger();
+    }
 
     @Test
     public void testUtilityClassConstructor() throws Exception {
