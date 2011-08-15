@@ -14,9 +14,6 @@ import org.apache.tools.ant.taskdefs.StreamPumper;
  */
 class AntProcOutputBuffer extends Object implements ExecuteStreamHandler {
 
-    /**
-     * Constructs a new <code>Buffer</code>.
-     */
     public AntProcOutputBuffer() {
         _outBuffer = new ByteArrayOutputStream();
         _errBuffer = new ByteArrayOutputStream();
