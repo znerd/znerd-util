@@ -17,7 +17,7 @@ public class ArrayUtils {
             throw new IllegalArgumentException("array == null");
         }
         infix = (infix != null) ? infix : "";
-        beforeLast = (beforeLast != null) ? beforeLast : "";
+        beforeLast = (beforeLast != null) ? beforeLast : infix;
 
         if (array.length < 1) {
             return "";

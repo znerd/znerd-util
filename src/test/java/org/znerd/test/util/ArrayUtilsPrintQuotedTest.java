@@ -8,7 +8,7 @@ import org.znerd.util.ArrayUtils;
 public class ArrayUtilsPrintQuotedTest {
 
     @Test
-    public void testInvalidArguments() {
+    public void testNullString() {
         boolean ok = false;
         try {
             ArrayUtils.printQuoted(null, "infix", "beforeLast");
@@ -16,6 +16,32 @@ public class ArrayUtilsPrintQuotedTest {
             ok = true;
         }
         assertTrue("Expected IllegalArgumentException", ok);
+    }
+    
+    @Test
+    public void testNullItem() {
+        String[] array = new String[] { null };
+        boolean ok = false;
+        try {
+            ArrayUtils.printQuoted(array, "infix", "beforeLast");
+        } catch (IllegalArgumentException cause) {
+            ok = true;
+        }
+        assertTrue("Expected IllegalArgumentException", ok);        
+    }
+    
+    @Test
+    public void testNullInfix() {
+        String[] array = new String[] { "one", "two", "three" };
+        String result = ArrayUtils.printQuoted(array, null, " XXX ");
+        assertEquals("\"one\"\"two\" XXX \"three\"", result);
+    }
+
+    @Test
+    public void testNullBeforeLast() {
+        String[] array = new String[] { "one", "two", "three" };
+        String result = ArrayUtils.printQuoted(array, ", ", null);
+        assertEquals("\"one\", \"two\", \"three\"", result);
     }
     
     @Test
