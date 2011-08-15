@@ -4,6 +4,7 @@
 * Renamed CheckDirUtils to DirectoryUtils.
 * Introduced InMemoryLimb, AntLimb, MavenLimb.
 * Added ArrayUtils.
+* Introduced CommandRunner and friend in org.znerd.util.proc package.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.3 -------------------------------------
