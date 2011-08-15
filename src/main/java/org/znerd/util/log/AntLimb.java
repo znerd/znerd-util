@@ -7,7 +7,13 @@ import org.apache.tools.ant.Task;
 /**
  * Limb implementation that sends output via the Ant logging mechanism.
  * <p>
- * Levels are mapped as follows: TODO
+ * Levels are mapped as follows:
+ * <ul>
+ * <li>{@link LogLevel#DEBUG} is mapped to the Ant {@link Project#MSG_DEBUG} level.
+ * <li>{@link LogLevel#INFO} is mapped to the Ant {@link Project#MSG_VERBOSE} level.
+ * <li>{@link LogLevel#NOTICE} is mapped to the Ant {@link Project#MSG_INFO} level.
+ * <li>{@link LogLevel#WARNING} is mapped to the Ant {@link Project#MSG_WARN} level.
+ * <li>{@link LogLevel#ERROR} and {@link LogLevel#FATAL} are mapped to the Ant {@link Project#MSG_ERR} level.
  */
 public class AntLimb extends Limb {
 

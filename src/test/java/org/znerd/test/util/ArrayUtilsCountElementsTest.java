@@ -1,17 +1,12 @@
 // See the COPYRIGHT file for copyright and license information
 package org.znerd.test.util;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.znerd.util.ArrayUtils;
-import org.znerd.util.test.TestUtils;
 
-public class ArrayUtilsTest {
-    @Test
-    public void testUtilityClassConstructor() throws Exception {
-        TestUtils.testUtilityClassConstructor(ArrayUtils.class);
-    }
-
+public class ArrayUtilsCountElementsTest {
     @Test
     public void testNull() {
         assertEquals(0, ArrayUtils.countElements(null));
