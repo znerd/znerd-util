@@ -26,7 +26,7 @@ public class AntLimb extends Limb {
         logViaAnt(message, exception, antLevel);
     }
 
-    private int convertToAntLevel(LogLevel level) {
+    private static int convertToAntLevel(LogLevel level) {
         int antLevel;
         switch (level) {
             case DEBUG:
