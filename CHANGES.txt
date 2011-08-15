@@ -1,5 +1,10 @@
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.4 -------------------------------------
 
+* Added API documentation in AntLimb.
+
+
+--- CHANGES INTRODUCED IN ZNERD-UTIL 0.4 -------------------------------------
+
 * Implemented several unit tests.
 * Renamed CheckDirUtils to DirectoryUtils.
 * Introduced InMemoryLimb, AntLimb, MavenLimb.
