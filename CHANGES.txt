@@ -1,5 +1,12 @@
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.4 -------------------------------------
 
+* Added ArrayUtils.printQuoted(Object[],String,String).
+* Extended unit tests.
+* CommandRunner now supports a working directory.
+
+
+--- CHANGES INTRODUCED IN ZNERD-UTIL 0.4 -------------------------------------
+
 * Added API documentation in AntLimb.
 
 

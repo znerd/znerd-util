@@ -2,11 +2,17 @@
 package org.znerd.util.proc;
 
 import java.io.IOException;
+import java.io.File;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.Executor;
 import org.apache.commons.exec.ExecuteWatchdog;
+import org.znerd.util.ArrayUtils;
+
+import static org.znerd.util.log.Limb.log;
+import static org.znerd.util.log.LogLevel.*;
+import static org.znerd.util.text.TextUtils.quote;
 
 public class CommonsExecCommandRunner implements CommandRunner {
 
@@ -18,6 +24,11 @@ public class CommonsExecCommandRunner implements CommandRunner {
 
     @Override
     public CommandRunResult runCommand(String command, String... arguments) {
+        return runCommand(null, command, arguments);
+    }
+
+    @Override
+    public CommandRunResult runCommand(File workingDirectory, String command, String... arguments) {
         long start = System.currentTimeMillis();
         ExecuteWatchdog watchdog = createWatchdog();
         CommonsExecProcOutputBuffer buffer = new CommonsExecProcOutputBuffer();
@@ -25,7 +36,13 @@ public class CommonsExecCommandRunner implements CommandRunner {
         CommandLine commandLine = createCommandLine(command, arguments);
         int exitCode;
         IOException exception;
+        log(INFO, "Setting working directory to: " + quote(workingDirectory) + '.');
+        String argumentsString = ArrayUtils.printQuoted(arguments, ", ", " and ");
         try {
+            if (workingDirectory != null) {
+                executor.setWorkingDirectory(workingDirectory); // TODO: Error handling
+            }
+            log(INFO, "Executing command " + quote(command) + " with argument(s) " + argumentsString + '.');
             exitCode = executor.execute(commandLine);
             exception = null;
         } catch (IOException cause) {
