@@ -29,6 +29,23 @@ public class ArrayUtilsPrintQuotedTest {
         }
         assertTrue("Expected IllegalArgumentException", ok);        
     }
+
+    @Test
+    public void testNullItemToString() {
+        Object obj = new Object() {
+            public String toString() {
+                return null;
+            }
+        };
+        Object[] array = new Object[] { obj };
+        boolean ok = false;
+        try {
+            ArrayUtils.printQuoted(array, "infix", "beforeLast");
+        } catch (IllegalArgumentException cause) {
+            ok = true;
+        }
+        assertTrue("Expected IllegalArgumentException", ok);        
+    }
     
     @Test
     public void testNullInfix() {
