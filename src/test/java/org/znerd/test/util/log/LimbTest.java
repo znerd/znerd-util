@@ -30,4 +30,9 @@ public class LimbTest {
     public void testLogWithException() {
         Limb.log(null, null, new Error("Just for testing, please ignore."));
     }
+
+    @Test
+    public void testLogWithoutException() {
+        Limb.log(null, null);
+    }
 }
