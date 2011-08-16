@@ -4,6 +4,7 @@
 * Extended unit tests.
 * CommandRunner now supports a working directory.
 * Added API documentation in AntLimb.
+* Added more metadata in POM file.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.4 -------------------------------------

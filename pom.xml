@@ -2,9 +2,38 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.znerd</groupId>
   <artifactId>znerd-util</artifactId>
-  <packaging>jar</packaging>
-  <name>Znerd.org Utility Library</name>
   <version>0.5-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Znerd.org Utility Library</name>
+  <description>Set of utility classes (with associated unit tests) used by other znerd.org-projects</description>
+  <url>http://github.com/znerd/znerd-util/</url>
+
+  <licenses>
+    <license>
+      <name>Revised BSD License</name>
+	  <comments>A business-friendly open source license</comments>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>ernst</id>
+      <name>Ernst de Haan</name>
+      <email>ernst@ernstdehaan.com</email>
+      <url>http://ernstdehaan.com/</url>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties>
+        <picUrl>TODO</picUrl>
+      </properties>
+    </developer>
+  </developers>
 
   <properties>
     <ant.version>1.8.2</ant.version>
@@ -20,13 +49,13 @@
       <groupId>org.apache.ant</groupId>
       <artifactId>ant</artifactId>
       <version>${ant.version}</version>
-	  <scope>provided</scope>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
       <version>${maven.version}</version>
-	  <scope>provided</scope>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -58,11 +87,11 @@
           <target>1.6</target>
         </configuration>
       </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-			</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+      </plugin>
     </plugins>
   </build>
 </project>
