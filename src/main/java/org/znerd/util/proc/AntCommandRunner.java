@@ -2,7 +2,6 @@
 package org.znerd.util.proc;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Execute;
@@ -15,12 +14,12 @@ import static org.znerd.util.text.TextUtils.quote;
 
 public class AntCommandRunner implements CommandRunner {
 
-    public AntCommandRunner(Project project, long timeOut) {
-        if (project == null) {
-            throw new IllegalArgumentException("project == null");
+    public AntCommandRunner(Project antProject, long commandTimeOut) {
+        if (antProject == null) {
+            throw new IllegalArgumentException("antProject == null");
         }
-        _project = project;
-        _timeOut = timeOut;
+        _project = antProject;
+        _timeOut = commandTimeOut;
     }
 
     private Project _project;
@@ -35,45 +34,54 @@ public class AntCommandRunner implements CommandRunner {
         long start = System.currentTimeMillis();
         CommandRunResult result = new CommandRunResult();
         AntProcOutputBuffer buffer = new AntProcOutputBuffer();
-        int exitCode = 0;
-        if (workingDirectory != null) {
-            try {
-                setWorkingDirectory(workingDirectory);
-            } catch (IOException cause) {
-                result.setException(cause);
-                exitCode = -1;
-            }
+        Execute execute = createExecute(workingDirectory, command, buffer, arguments);
+        int exitCode;
+        Throwable exception;
+        try {
+            exitCode = execute.execute();
+            exception = null;
+        } catch (Exception cause) {
+            exitCode = -1;
+            exception = cause;
         }
-        if (exitCode == 0) {
-            String[] cmdline = createCmdline(command, arguments);
-            ExecuteWatchdog watchdog = (_timeOut > 0L) ? new ExecuteWatchdog(_timeOut) : null;
-            Execute execute = new Execute(buffer, watchdog);
-            execute.setAntRun(_project);
-            execute.setCommandline(cmdline);
-            String argumentsString = ArrayUtils.printQuoted(arguments, ", ", " and ");
+        return enrichResult(start, result, buffer, exitCode, exception);
+    }
 
-            log(LogLevel.INFO, "Running command " + quote(command) + " with argument(s): " + quote(argumentsString) + '.');
-            try {
-                exitCode = execute.execute();
-            } catch (IOException cause) {
-                result.setException(cause);
-                exitCode = -1;
-            }
-        }
-
+    private CommandRunResult enrichResult(long start, CommandRunResult result, AntProcOutputBuffer buffer, int exitCode, Throwable exception) {
         result.setDuration(System.currentTimeMillis() - start);
         result.setExitCode(exitCode);
-        result.setOutString(buffer.getOutString());
-        result.setErrString(buffer.getErrString());
-
+        result.setStdoutString(buffer.getStdoutString());
+        result.setStderrString(buffer.getStderrString());
+        result.setException(exception);
         return result;
     }
 
-    private void setWorkingDirectory(File path) throws IOException {
-        // TODO: Implement setWorkingDirectory
+    private Execute createExecute(File workingDirectory, String command, AntProcOutputBuffer buffer, String... arguments) {
+        String[] commandLine = createCommandLine(command, arguments);
+        Execute execute = createExecuteFromBuffer(buffer);
+        if (workingDirectory != null) {
+            execute.setWorkingDirectory(workingDirectory);
+        }
+        execute.setAntRun(_project);
+        execute.setCommandline(commandLine);
+        String argumentsString = ArrayUtils.printQuoted(arguments, ", ", " and ");
+
+        log(LogLevel.INFO, "Running command " + quote(command) + " with argument(s): " + quote(argumentsString) + '.');
+        return execute;
     }
 
-    private String[] createCmdline(String command, String... arguments) {
+    private Execute createExecuteFromBuffer(AntProcOutputBuffer buffer) {
+        ExecuteWatchdog watchdog = createWatchdog();
+        Execute execute = new Execute(buffer, watchdog);
+        return execute;
+    }
+
+    private ExecuteWatchdog createWatchdog() {
+        ExecuteWatchdog watchdog = (_timeOut > 0L) ? new ExecuteWatchdog(_timeOut) : null;
+        return watchdog;
+    }
+
+    private String[] createCommandLine(String command, String... arguments) {
         final int argumentCount = arguments.length;
         final String[] cmdline = new String[argumentCount + 1];
         cmdline[0] = command;

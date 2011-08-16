@@ -95,7 +95,7 @@ class AntProcOutputBuffer extends Object implements ExecuteStreamHandler {
      * 
      * @return the collected <em>stdout</em> output as a character string, never <code>null</code>.
      */
-    public String getOutString() {
+    public String getStdoutString() {
         return _outBuffer.toString();
     }
 
@@ -115,7 +115,7 @@ class AntProcOutputBuffer extends Object implements ExecuteStreamHandler {
      * 
      * @return the collected <em>stderr</em> output as a character string, never <code>null</code>.
      */
-    public String getErrString() {
+    public String getStderrString() {
         return _errBuffer.toString();
     }
 }

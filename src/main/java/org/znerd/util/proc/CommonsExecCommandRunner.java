@@ -61,8 +61,8 @@ public class CommonsExecCommandRunner implements CommandRunner {
         CommandRunResult result = new CommandRunResult();
         result.setDuration(System.currentTimeMillis() - start);
         result.setExitCode(exitCode);
-        result.setOutString(buffer.getStdoutAsString());
-        result.setErrString(buffer.getStderrAsString());
+        result.setStdoutString(buffer.getStdoutAsString());
+        result.setStderrString(buffer.getStderrAsString());
         result.setException(exception);
         return result;
     }

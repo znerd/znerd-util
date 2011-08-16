@@ -1,8 +1,6 @@
 // Copyright 2011, Ernst de Haan
 package org.znerd.util.proc;
 
-import java.io.IOException;
-
 public class CommandRunResult {
 
     public void setDuration(long duration) {
@@ -15,13 +13,13 @@ public class CommandRunResult {
         return _duration;
     }
 
-    public void setException(IOException exception) {
+    public void setException(Throwable exception) {
         _exception = exception;
     }
 
-    private IOException _exception;
+    private Throwable _exception;
 
-    public IOException getException() {
+    public Throwable getException() {
         return _exception;
     }
 
@@ -43,23 +41,23 @@ public class CommandRunResult {
         return !isSucceeded();
     }
 
-    public void setOutString(String outString) {
-        _outString = outString;
+    public void setStdoutString(String outString) {
+        _stdoutString = outString;
     }
 
-    private String _outString;
+    private String _stdoutString;
 
-    public String getOutString() {
-        return _outString;
+    public String getStdoutString() {
+        return _stdoutString;
     }
 
-    public void setErrString(String errString) {
-        _errString = errString;
+    public void setStderrString(String stderrString) {
+        _stderrString = stderrString;
     }
 
-    private String _errString;
+    private String _stderrString;
 
-    public String getErrString() {
-        return _errString;
+    public String getStderrString() {
+        return _stderrString;
     }
 }
