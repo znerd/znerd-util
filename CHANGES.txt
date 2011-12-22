@@ -1,5 +1,7 @@
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.6 -------------------------------------
 
+* Added LogLevel.isSmallerThanOrEqualTo(LogLevel).
+
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.5 -------------------------------------
 
