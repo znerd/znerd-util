@@ -9,10 +9,11 @@
   <description>Set of utility classes (with associated unit tests) used by other znerd.org-projects</description>
   <url>http://github.com/znerd/znerd-util/</url>
 
+  <inceptionYear>2011</inceptionYear>
+
   <licenses>
     <license>
-      <name>Revised BSD License</name>
-      <comments>A business-friendly open source license</comments>
+      <name>The BSD 2-Clause License</name>
       <url>http://www.opensource.org/licenses/bsd-license.php</url>
       <distribution>repo</distribution>
     </license>
@@ -53,37 +54,28 @@
     </developer>
   </developers>
 
-  <properties>
-    <ant.version>1.8.4</ant.version>
-    <maven.version>3.0.3</maven.version>
-    <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
-    <maven-surefire-plugin.version>2.5</maven-surefire-plugin.version>
-    <commons-exec.version>1.1</commons-exec.version>
-    <junit.version>4.8.2</junit.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.apache.ant</groupId>
       <artifactId>ant</artifactId>
-      <version>${ant.version}</version>
+      <version>1.8.4</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
-      <version>${maven.version}</version>
+      <version>3.0.4</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-exec</artifactId>
-      <version>${commons-exec.version}</version>
+      <version>1.1</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
+      <version>4.10</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -99,7 +91,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven-compiler-plugin.version}</version>
+        <version>2.3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -108,12 +100,8 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-surefire-plugin.version}</version>
+        <version>2.5</version>
       </plugin>
     </plugins>
   </build>
-
-  <scm>
-    <tag>znerd-util-0.7</tag>
-  </scm>
 </project>
