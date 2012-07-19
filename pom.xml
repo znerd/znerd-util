@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.znerd</groupId>
   <artifactId>znerd-util</artifactId>
-  <version>0.6</version>
+  <version>0.7-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Znerd.org Utility Library</name>
@@ -12,11 +12,17 @@
   <licenses>
     <license>
       <name>Revised BSD License</name>
-	  <comments>A business-friendly open source license</comments>
+      <comments>A business-friendly open source license</comments>
       <url>http://www.opensource.org/licenses/bsd-license.php</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
+
+  <parent>
+    <groupId>org.znerd</groupId>
+    <artifactId>znerd-oss-parent</artifactId>
+    <version>1-SNAPSHOT</version>
+  </parent>
 
   <developers>
     <developer>
@@ -28,9 +34,9 @@
         <role>architect</role>
         <role>developer</role>
       </roles>
-      <timezone>+1</timezone>
+      <timezone>Europe/Amsterdam</timezone>
       <properties>
-        <picUrl>TODO</picUrl>
+        <picUrl>http://ernstdehaan.com/ernst.jpg</picUrl>
       </properties>
     </developer>
   </developers>
