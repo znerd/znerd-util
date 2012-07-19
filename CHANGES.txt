@@ -1,6 +1,7 @@
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.7 -------------------------------------
 
 * Set parent project to znerd-oss-parent.
+* Upgraded dependency of Apache Ant: 1.8.2 -> 1.8.4.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.6 -------------------------------------
