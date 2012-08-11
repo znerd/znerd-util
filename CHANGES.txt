@@ -1,6 +1,7 @@
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.8 -------------------------------------
 
 * Upgrade parent project version; from znerd-oss-parent 2 -> 3.
+* Added PolySuite class - requires JUnit.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.7 -------------------------------------
