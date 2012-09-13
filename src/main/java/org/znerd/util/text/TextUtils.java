@@ -55,6 +55,52 @@ public class TextUtils {
         return Pattern.compile(regex).matcher(s).find();
     }
 
+    /**
+     * Compares the specified strings for equality, after normalizing whitespace and ignoring case.
+     * 
+     * @param s1
+     *            the first string, or <code>null</code>.
+     * @param s2
+     *            the second string, or <code>null</code>.
+     * @return if <code>s1</code> and <code>s2</code> are considered equal, normalizing whitespace and ignoring case.
+     */
+    public static boolean fuzzyEquals(String s1, String s2) {
+        s1 = normalizeWhitespace(s1);
+        s2 = normalizeWhitespace(s2);
+
+        return s1.equalsIgnoreCase(s2);
+    }
+
+    /**
+     * Removes all leading and trailing whitespace from a string, and replaces all internal whitespace with a single space character. If <code>null</code> is passed, then <code>""</code> is returned.
+     * 
+     * @param s
+     *            the string, or <code>null</code>.
+     * @return the string with all leading and trailing whitespace removed and all internal whitespace normalized, never <code>null</code>.
+     */
+    public static String normalizeWhitespace(String s) {
+        String normalized = "";
+        if (s != null) {
+            s = s.trim();
+            boolean prevIsWhitespace = false;
+            for (int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                boolean thisIsWhitespace = (c <= 0x20);
+
+                if (!(thisIsWhitespace && prevIsWhitespace)) {
+                    if (thisIsWhitespace) {
+                        normalized += ' ';
+                        prevIsWhitespace = true;
+                    } else {
+                        normalized += c;
+                        prevIsWhitespace = false;
+                    }
+                }
+            }
+        }
+        return normalized;
+    }
+
     private TextUtils() {
     }
 }
