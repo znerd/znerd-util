@@ -4,6 +4,8 @@ package org.znerd.util.text;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.znerd.util.Preconditions;
+
 /**
  * Text string utility functions.
  */
@@ -48,11 +50,8 @@ public class TextUtils {
      * </pre>
      */
     public static final boolean matches(String s, String regex) {
-        if (s == null) {
-            throw new IllegalArgumentException("s == null");
-        } else if (regex == null) {
-            throw new IllegalArgumentException("regex == null");
-        }
+        Preconditions.checkArgument(s == null, "s == null");
+        Preconditions.checkArgument(regex == null, "regex == null");
         return Pattern.compile(regex).matcher(s).find();
     }
 
