@@ -1,5 +1,8 @@
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.9 -------------------------------------
 
+* Added unit tests for Preconditions class.
+
+
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.8 -------------------------------------
 
 * Upgrade parent project version; from znerd-oss-parent 2 -> 3.
