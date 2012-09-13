@@ -1,6 +1,7 @@
 // See the COPYRIGHT file for copyright and license information
 package org.znerd.util.text;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -8,11 +9,25 @@ import java.util.regex.Pattern;
  */
 public class TextUtils {
 
+    private static final String NULL_STRING = "(null)";
+
     /**
-     * Puts quote characters around the string representation of an object. Returns <code>"(null)"</code> if the object is <code>null</code>.
+     * Puts quote characters around the string representation of an object, escaping all backslash and quote characters inside the string. Returns <code>"(null)"</code> if the object is
+     * <code>null</code> or if the object's <code>toString()</code> method returns <code>null</code>.
      */
     public static final String quote(Object o) {
-        return o == null ? "(null)" : "\"" + o.toString() + '"';
+        if (o == null) {
+            return NULL_STRING;
+        }
+
+        String s = o.toString();
+        if (s == null) {
+            return NULL_STRING;
+        }
+
+        s = s.replaceAll("\\\\", Matcher.quoteReplacement("\\\\"));
+        s = s.replaceAll("\"", Matcher.quoteReplacement("\\\""));
+        return '"' + s + '"';
     }
 
     /**

@@ -7,22 +7,37 @@ import org.znerd.util.text.TextUtils;
 
 public class TextUtilsQuoteTest {
     @Test
-    public void testQuoteNull() {
+    public void testNull() {
         assertEquals("(null)", TextUtils.quote(null));
+    }
+    
+    @Test
+    public void testObjectToStringReturnsNull() {
+        Object o = new Object() {
+            public String toString() {
+                return null;
+            }
+        };
+        assertEquals("(null)", TextUtils.quote(o));
     }
 
     @Test
-    public void testQuoteEmptyString() {
+    public void testEmptyString() {
         assertEquals("\"\"", TextUtils.quote(""));
     }
 
     @Test
-    public void testQuoteNonEmptyStringWithoutQuotes() {
+    public void testStringWithoutQuotes() {
         assertEquals("\"bla\"", TextUtils.quote("bla"));
     }
 
     @Test
-    public void testQuoteNonEmptyStringWithQuotes() {
-        assertEquals("\"bla \"yet another bla\"\"", TextUtils.quote("bla \"yet another bla\""));
+    public void testStringWithQuotes() {
+        assertEquals("\"bla \\\"yet another bla\\\"\"", TextUtils.quote("bla \"yet another bla\""));
+    }
+
+    @Test
+    public void testStringWithBackslashes() {
+        assertEquals("\"\\\\ bla \\\\ bla \\\\\"", TextUtils.quote("\\ bla \\ bla \\"));
     }
 }
