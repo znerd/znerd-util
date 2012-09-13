@@ -1,5 +1,5 @@
 // See the COPYRIGHT file for copyright and license information
-package org.znerd.test.util;
+package org.znerd.util;
 
 import org.junit.Test;
 import org.znerd.util.ArrayUtils;

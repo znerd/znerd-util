@@ -1,5 +1,5 @@
 // See the COPYRIGHT file for copyright and license information
-package org.znerd.test.util.text;
+package org.znerd.util.text;
 
 import org.junit.Test;
 import org.znerd.util.test.TestFailedException;

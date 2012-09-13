@@ -2,6 +2,7 @@
 
 * Added unit tests for Preconditions class.
 * TextUtils.quote now escapes backslashes and quotes. Expanded unit tests.
+* Moved unit tests from org.znerd.test.util to org.znerd.util package.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.8 -------------------------------------

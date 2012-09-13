@@ -1,5 +1,5 @@
 // See the COPYRIGHT file for copyright and license information
-package org.znerd.test.util.io;
+package org.znerd.util.io;
 
 import java.io.File;
 

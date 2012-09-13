@@ -1,5 +1,5 @@
 // See the COPYRIGHT file for copyright and license information
-package org.znerd.test.util.test;
+package org.znerd.util.test;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

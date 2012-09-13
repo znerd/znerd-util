@@ -1,5 +1,5 @@
 // See the COPYRIGHT file for copyright and license information
-package org.znerd.test.util.log;
+package org.znerd.util.log;
 
 import org.junit.Before;
 import org.junit.Test;
