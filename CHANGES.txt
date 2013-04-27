@@ -1,4 +1,7 @@
---- CHANGES INTRODUCED IN ZNERD-UTIL 0.9 -------------------------------------
+--- CHANGES INTRODUCED IN ZNERD-UTIL 0.10 (under development) ----------------
+
+
+--- CHANGES INTRODUCED IN ZNERD-UTIL 0.9 (April 27, 2013) --------------------
 
 * Added TextUtils.fuzzyEquals(String,String).
 * Added TextUtils.normalizeWhitespace(String).
