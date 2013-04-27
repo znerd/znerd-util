@@ -6,6 +6,7 @@
 * Moved unit tests from org.znerd.test.util to org.znerd.util package.
 * Added unit tests for Preconditions class.
 * Added unit tests for LogLevel class.
+* When running Cobertura, now using 2.5.2 instead of 2.5.1.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.8 -------------------------------------
