@@ -1,4 +1,6 @@
---- CHANGES INTRODUCED IN ZNERD-UTIL 0.10 (under development) ----------------
+--- CHANGES INTRODUCED IN ZNERD-UTIL 0.10 (July 5, 2013) ---------------------
+
+* AntCommandRunner now retries with "CMD /c" on Windows systems.
 
 
 --- CHANGES INTRODUCED IN ZNERD-UTIL 0.9 (April 27, 2013) --------------------
